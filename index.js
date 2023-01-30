@@ -106,7 +106,7 @@ function isBirthday(student) {
 
 function nextStudent() {
   currentStudentNumber++;
-  nameEl.innerText = students[currentStudentNumber].name;
+  nameEl.innerText = students[currentStudentNumber].name+" "+students[currentStudentNumber].surname;
   birthdayEl.innerText = isBirthday(students[currentStudentNumber])
     ? `Today is ${students[currentStudentNumber].name}'s birthday!`
     : '';
@@ -115,7 +115,7 @@ function nextStudent() {
 function previousStudent() {
   if (currentStudentNumber > 0) {
     currentStudentNumber--;
-    nameEl.innerText = students[currentStudentNumber].name;
+    nameEl.innerText = students[currentStudentNumber].name+" "+students[currentStudentNumber].surname;
     birthdayEl.innerText = isBirthday(students[currentStudentNumber])
       ? `Today is ${students[currentStudentNumber].name}'s birthday!`
       : '';
@@ -146,7 +146,8 @@ buttons.forEach(async function (button) {
   button.addEventListener('click', async function () {
     const clickedButton = this.innerText;
     switch (clickedButton) {
-      case 'Grade 0':
+      case 'Grade RR':
+      case 'Grade R':
       case 'Grade 1':
       case 'Grade 2':
       case 'Grade 3':
