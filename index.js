@@ -83,7 +83,7 @@ async function postData() {
     attendance: students.map((student) => student.isPresent),
   };
   let formData = new FormData();
-  Object.keys(key => formData.append(key, body[]))
+  Object.keys(body).map((key) => formData.append(key, body[key]));
   await fetch(
     'https://script.google.com/macros/s/AKfycbx7ac90fCWW-Yf1lWuxGVZZvMzCPaGhfJiQpot_wtc/dev',
     { method: 'POST', body: formData }
@@ -153,7 +153,7 @@ buttons.forEach(async function (button) {
       case 'Grade 5':
       case 'Grade 6':
       case 'Grade 7':
-      grade = clickedButton;
+        grade = clickedButton;
         await getData();
         nextStudent();
         phase1El.style.display = 'none';
