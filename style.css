@@ -7,8 +7,8 @@ body {
   background-color: white;
 }
 
-h1, h2, h3 {
-  color: lightblue;
+h1 {
+  color: royalblue;
   margin-bottom: 20px;
 }
 
@@ -22,7 +22,7 @@ td {
 
 tr {
   border-bottom-style: solid;
-  border-bottom-color: lightblue;
+  border-bottom-color: royalblue;
 }
 
 #app {
@@ -59,30 +59,30 @@ tr {
 }
 
 .blue-button {
-  background-color: lightblue;
-  border: 2px solid lightblue;
+  background-color: royalblue;
+  border: 2px solid royalblue;
 }
 .blue-button:hover {
   background-color: white;
-  color: lightblue;
+  color: royalblue;
 }
 
 .red-button {
-  background-color: lightcoral;
-  border: 2px solid lightcoral;
+  background-color: coral;
+  border: 2px solid coral;
 }
 .red-button:hover {
   background-color: white;
-  color: lightcoral;
+  color: coral;
 }
 
 .green-button {
-  background-color: lightgreen;
-  border: 2px solid lightgreen;
+  background-color: green;
+  border: 2px solid green;
 }
 .green-button:hover {
   background-color: white;
-  color: lightgreen;
+  color: green;
 }
 
 .button {
