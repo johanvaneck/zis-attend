@@ -80,12 +80,13 @@ async function postData() {
   const body = {
     worksheetId: '1gLEdCIzp41I6zBdWDELA3rqfV-rR34LBNgWp9kgQ-GI',
     sheetName: grade,
-    attendance: students.map((student) => student.isPresent),
+    attendance: JSON.stringify(students.map((student) => student.isPresent)),
   };
   let formData = new FormData();
   Object.keys(body).map((key) => formData.append(key, body[key]));
+
   await fetch(
-    'https://script.google.com/macros/s/AKfycbx7ac90fCWW-Yf1lWuxGVZZvMzCPaGhfJiQpot_wtc/dev',
+    'https://script.google.com/macros/s/AKfycbz5rW8Ug2VGbzfqS1nE2PhAJvJnHgJezbY2pkeii3Uuc5SUXcLAFJOA3db000NpVDq1/exec',
     { method: 'POST', body: formData }
   )
     .then((response) => {
