@@ -86,7 +86,7 @@ async function postData() {
   Object.keys(body).map((key) => formData.append(key, body[key]));
 
   await fetch(
-    'https://script.google.com/macros/s/AKfycbz5rW8Ug2VGbzfqS1nE2PhAJvJnHgJezbY2pkeii3Uuc5SUXcLAFJOA3db000NpVDq1/exec',
+    'https://script.google.com/macros/s/AKfycbzNSKvLHPuElwdQTYVLCFro8SfZEleRvtMYuE-RMjyPv_n1ya_13m99duWG31HC6BkX/exec',
     { method: 'POST', body: formData }
   )
     .then((response) => {
