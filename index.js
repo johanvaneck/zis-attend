@@ -22,7 +22,7 @@ async function getData() {
   )
     .then((response) => response.json())
     .then((data) => {
-      data.values.forEach((row, index) => {
+      data.values.forEach((row) => {
         let birthday;
         if (row[2]) {
           const ddmmyyyy = row[2].split('/');
