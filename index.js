@@ -5,6 +5,7 @@ let header = [];
 let students = [];
 let currentStudentNumber = 0;
 let lastColumn = null;
+let grade = null;
 
 const alphabet = [
   'A',
@@ -36,7 +37,6 @@ const alphabet = [
 ];
 
 const spreadsheetId = '1gLEdCIzp41I6zBdWDELA3rqfV-rR34LBNgWp9kgQ-GI';
-const grade = null;
 const apiKey = 'AIzaSyCMLldbok-l2C5hz4mzKEhHqPAzox0pBtk';
 
 const phase1El = document.getElementById('phase1');
