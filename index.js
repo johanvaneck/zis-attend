@@ -1,38 +1,6 @@
-// Import stylesheets
-import './style.css';
-
 let students = [];
 let currentStudentNumber = -1;
 let grade = null;
-
-const alphabet = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-];
 
 const spreadsheetId = '1gLEdCIzp41I6zBdWDELA3rqfV-rR34LBNgWp9kgQ-GI';
 const apiKey = 'AIzaSyCMLldbok-l2C5hz4mzKEhHqPAzox0pBtk';
