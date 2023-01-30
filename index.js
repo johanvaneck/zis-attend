@@ -1,7 +1,6 @@
 // Import stylesheets
 import './style.css';
 
-let header = [];
 let students = [];
 let currentStudentNumber = 0;
 let lastColumn = null;
@@ -47,7 +46,6 @@ const nameEl = document.getElementById('name');
 const birthdayEl = document.getElementById('birthday');
 
 const today = new Date().toLocaleDateString();
-console.log(today);
 
 // hook up Google Sheets
 async function getData() {
@@ -57,18 +55,12 @@ async function getData() {
     .then((response) => response.json())
     .then((data) => {
       data.values.forEach((row, index) => {
-        const studentObject = {
-          name: row[0],
-          surname: row[1],
-          birthday: row[2],
-          isPresent: today,
-          pastAttendance: row.slice(3),
-        };
-        if (index == 0) {
-          header.push(studentObject);
-        } else {
-          students.push(studentObject);
-        }
+          students.push({
+            name: row[0],
+            surname: row[1],
+            birthday: row[2],
+            isPresent: null,
+          });
       });
       lastColumn = data.values[0].length || 0;
       console.log(lastColumn);
@@ -82,32 +74,6 @@ async function getData() {
     });
 }
 
-async function postData() {
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${apiKey}`,
-  });
-
-  const options = {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify({
-      requests: [
-        {
-          insertDimension: {
-            range: {
-              sheetId: 0,
-              dimension: 'COLUMNS',
-              startIndex: 3,
-              endIndex: 4,
-            },
-            inheritFromBefore: false,
-          },
-        },
-      ],
-    }),
-  };
-
   await fetch(
     `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}:batchUpdate`,
     options
@@ -119,14 +85,15 @@ async function postData() {
     })
     .catch((error) => console.error('Error inserting blank column: ', error));
 
-  if(data) {
-  const values = header.isPresent + students.map((student) => student.isPresent);
+  if (data) {
+    const values =
+      header.isPresent + students.map((student) => student.isPresent);
     await fetch(
       `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/valueInputOption=USER_ENTERED`,
       JSON.stringify({
-        "range": `${grade}!D1:D`,
-        "majorDimension": "COLUMNS",
-        "values": values,
+        range: `${grade}!D1:D`,
+        majorDimension: 'COLUMNS',
+        values: values,
       })
     )
       .then((res2) => res2.json())
@@ -147,6 +114,7 @@ function updateStudent(isNext) {
       currentStudent.birthday == today
         ? `Today is ${currentStudent.name}'s birthday!`
         : '';
+    console.log(students[currentStudentNumber].birthday + " : " + today);
   } else if (currentStudentNumber > 0) {
     currentStudentNumber--;
     nameEl.innerText = students[currentStudentNumber].name;
@@ -159,7 +127,6 @@ function updateStudent(isNext) {
 
 async function takeAttendance(isPresent) {
   students[currentStudentNumber].isPresent = isPresent;
-  console.log(`${currentStudentNumber} : ${students.length - 1}`);
   if (currentStudentNumber == students.length - 1) {
     console.log(students);
     phase2El.style.display = 'none';
