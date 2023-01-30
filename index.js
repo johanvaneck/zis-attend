@@ -55,9 +55,14 @@ async function getData() {
     .then((response) => response.json())
     .then((data) => {
       data.values.forEach((row, index) => {
-        const ddmmyyyy = row[2].split('/');
-        const mmddyyyy = `${ddmmyyyy[1]}/${ddmmyyyy[0]}/${ddmmyyyy[2]}`;
-        const birthday = new Date(mmddyyyy).toLocaleDateString();
+        let birthday;
+        if (row[2]) {
+          const ddmmyyyy = row[2].split('/');
+          const mmddyyyy = `${ddmmyyyy[1]}/${ddmmyyyy[0]}/${ddmmyyyy[2]}`;
+          birthday = new Date(mmddyyyy).toLocaleDateString();
+        } else {
+          birthday = null;
+        }
         students.push({
           name: row[0],
           surname: row[1],
@@ -98,15 +103,20 @@ async function postData() {
 }
 
 function isBirthday(student) {
-  if (student.birthday.slice(0, 4) === today.slice(0, 4)) {
-    return true;
+  if (student.birthday) {
+    if (student.birthday.slice(0, 4) === today.slice(0, 4)) {
+      return true;
+    }
   }
   return false;
 }
 
 function nextStudent() {
   currentStudentNumber++;
-  nameEl.innerText = students[currentStudentNumber].name+" "+students[currentStudentNumber].surname;
+  nameEl.innerText =
+    students[currentStudentNumber].name +
+    ' ' +
+    students[currentStudentNumber].surname;
   birthdayEl.innerText = isBirthday(students[currentStudentNumber])
     ? `Today is ${students[currentStudentNumber].name}'s birthday!`
     : '';
@@ -115,7 +125,10 @@ function nextStudent() {
 function previousStudent() {
   if (currentStudentNumber > 0) {
     currentStudentNumber--;
-    nameEl.innerText = students[currentStudentNumber].name+" "+students[currentStudentNumber].surname;
+    nameEl.innerText =
+      students[currentStudentNumber].name +
+      ' ' +
+      students[currentStudentNumber].surname;
     birthdayEl.innerText = isBirthday(students[currentStudentNumber])
       ? `Today is ${students[currentStudentNumber].name}'s birthday!`
       : '';
