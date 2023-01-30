@@ -12,12 +12,43 @@ h1, h2, h3 {
   margin-bottom: 20px;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 5px;
+}
+
+tr {
+  border-bottom-style: solid;
+  border-bottom-color: lightblue;
+}
+
 #app {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   text-align: center;
+}
+
+#phase1 {
+  display: flex;
+  flex-direction: column;
+}
+
+#phase2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#phase3 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .blue-button {
