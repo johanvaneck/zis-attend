@@ -29,28 +29,13 @@ tr {
   text-align: center;
 }
 
-#phase1 {
+#phase1, #phase2, #phase3, #phase4 {
   display: flex;
   flex-direction: column;
 }
 
-#phase2 {
-  display: flex;
-  flex-direction: column;
+#phase2, #phase3, #phase4 {
   justify-content: space-around;
-  height: 100%;
-}
-
-#phase3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-}
-
-#phase4 {
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 

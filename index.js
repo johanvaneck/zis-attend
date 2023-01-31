@@ -14,7 +14,6 @@ const birthdayEl = document.getElementById('birthday');
 
 const today = new Date().toLocaleDateString();
 
-// hook up Google Sheets
 async function getData() {
   const gradeQuery = grade.replace(/\s/, '+');
   await fetch(
@@ -42,7 +41,7 @@ async function getData() {
     })
     .catch((error) => {
       alert(
-        'Something probably went wrong with the Google Sheet. Contact Johan.'
+        "Check your connection...\n\nIf that's working, then contact Johan."
       );
       console.error(error);
     });
