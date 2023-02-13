@@ -2,9 +2,6 @@ let students = [];
 let currentStudentNumber = -1;
 let grade = null;
 
-const spreadsheetId = '1gLEdCIzp41I6zBdWDELA3rqfV-rR34LBNgWp9kgQ-GI';
-const apiKey = 'AIzaSyCMLldbok-l2C5hz4mzKEhHqPAzox0pBtk';
-
 const phase1El = document.getElementById('phase1');
 const phase2El = document.getElementById('phase2');
 const phase3El = document.getElementById('phase3');
@@ -50,7 +47,7 @@ async function getData() {
 async function postData() {
   let isSuccess = false;
   const body = {
-    worksheetId: '1gLEdCIzp41I6zBdWDELA3rqfV-rR34LBNgWp9kgQ-GI',
+    worksheetId: '1UzlQscA4446nKpCquNBfxmXtwoKCd4juLqeTBpsDup4',
     sheetName: grade,
     attendance: JSON.stringify(students.map((student) => student.isPresent)),
   };
@@ -58,7 +55,7 @@ async function postData() {
   Object.keys(body).map((key) => formData.append(key, body[key]));
 
   await fetch(
-    'https://script.google.com/macros/s/AKfycbzNSKvLHPuElwdQTYVLCFro8SfZEleRvtMYuE-RMjyPv_n1ya_13m99duWG31HC6BkX/exec',
+    'https://script.google.com/macros/s/AKfycbzoUmlF_6CS9O5OzY3AZhdcuPOgZS5sPNwmMAvTIbaSQr8sEKHveSmdBXXb50ho1ko/exec',
     { method: 'POST', body: formData }
   )
     .then((response) => {
