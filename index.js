@@ -30,8 +30,8 @@ const getRawData = async (sheetName) => {
 };
 
 async function getData() {
-  const data = await getRawData(grade);
-  data.values.forEach((row) => {
+  const values = await getRawData(grade);
+  values.slice(1).forEach((row) => {
     let birthday;
     if (row[2]) {
       const ddmmyyyy = row[2].split("/");
