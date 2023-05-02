@@ -120,6 +120,40 @@ async function takeAttendance(isPresent) {
   }
 }
 
+function generateSelect() {
+  const reasons = {
+    1: "No Valid reason",
+    2: "Access to Transport",
+    3: "Act of nature",
+    4: "Court Appointment",
+    5: "Extra Mural",
+    6: "Death Family member",
+    7: "Drivers License",
+    8: "Exceptional circumstances",
+    9: "Family responsibilities",
+    10: "Hospitalised",
+    11: "Lack of funds",
+    12: "Medical Appointment",
+    13: "On holiday",
+    14: "Physical/Psychological illness",
+    15: "Pregnancy",
+    16: "Religious/cultural observances",
+    17: "School tour",
+    18: "Sick",
+    19: "Study Leave",
+    20: "Suspension by SMT",
+    21: "Suspension by SGB",
+  };
+
+  const select = document.querySelector('#select-reason')
+  Object.keys(reasons).forEach((key) => {
+    const option = document.createElement("option");
+    option.innerHTML = key;
+    option.value = reasons[key];
+    select.appendChild(option);
+  });
+}
+
 const buttons = document.querySelectorAll("button");
 buttons.forEach(async function (button) {
   button.addEventListener("click", async function () {
@@ -159,6 +193,9 @@ buttons.forEach(async function (button) {
       case "New Attendance":
         location.reload();
         break;
+        case "Use reason":
+
+          break;
     }
   });
 });
